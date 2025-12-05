@@ -1,6 +1,6 @@
 package ru.nikita.QuickOrderSystem.services;
 
-import dto.DishDto;
+import ru.nikita.QuickOrderSystem.dto.DishDto;
 import ru.nikita.QuickOrderSystem.entity.Dish;
 
 import java.util.List;

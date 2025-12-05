@@ -1,6 +1,6 @@
 package ru.nikita.QuickOrderSystem.entity;
 
-import dto.DishDto;
+import ru.nikita.QuickOrderSystem.dto.DishDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

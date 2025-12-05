@@ -1,4 +1,4 @@
-package dto;
+package ru.nikita.QuickOrderSystem.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

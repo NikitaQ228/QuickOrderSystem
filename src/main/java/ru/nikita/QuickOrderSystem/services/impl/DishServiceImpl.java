@@ -1,6 +1,6 @@
 package ru.nikita.QuickOrderSystem.services.impl;
 
-import dto.DishDto;
+import ru.nikita.QuickOrderSystem.dto.DishDto;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
