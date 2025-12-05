@@ -29,6 +29,8 @@ public class Order {
 
     private String address;
 
+    private String comment;
+
     private String phone;
 
     private String nameRecipient;
