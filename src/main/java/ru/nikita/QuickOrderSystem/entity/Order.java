@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ru.nikita.QuickOrderSystem.dto.OrderCreateDto;
 import ru.nikita.QuickOrderSystem.enums.Status;
 
 import java.time.LocalDateTime;
@@ -16,6 +17,7 @@ import java.util.List;
 @Table(name = "orders")
 public class Order {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -36,4 +38,13 @@ public class Order {
     private String nameRecipient;
 
     private LocalDateTime dateTime;
+
+    public Order(OrderCreateDto dto) {
+        this.address = dto.getAddress();
+        this.comment = dto.getComment();
+        this.phone = dto.getPhone();
+        this.nameRecipient = dto.getNameRecipient();
+        this.status = Status.CREATED;
+        this.dateTime = LocalDateTime.now();
+    }
 }

@@ -4,14 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.nikita.QuickOrderSystem.entity.Dish;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class OrderItemDto {
-    private Dish dish;
+@AllArgsConstructor
+public class OrderItemCreateDto {
+    private Long dishId;
     private int quantity;
-
 }

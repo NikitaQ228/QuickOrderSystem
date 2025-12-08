@@ -6,6 +6,7 @@ import ru.nikita.QuickOrderSystem.entity.User;
 import ru.nikita.QuickOrderSystem.enums.Role;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -18,4 +19,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     // поиск по части email, без регистра
     List<User> findByRoleAndEmailContainingIgnoreCase(Role role, String emailPart);
+
+    Optional<User> findByEmail(String email);
 }

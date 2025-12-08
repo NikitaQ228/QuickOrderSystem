@@ -2,9 +2,13 @@ package ru.nikita.QuickOrderSystem.component;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import ru.nikita.QuickOrderSystem.entity.Dish;
+import ru.nikita.QuickOrderSystem.entity.User;
+import ru.nikita.QuickOrderSystem.enums.Role;
 import ru.nikita.QuickOrderSystem.repository.DishRepository;
+import ru.nikita.QuickOrderSystem.repository.UserRepository;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,10 +17,14 @@ import java.util.List;
 public class DataInitializer implements CommandLineRunner {
 
     private final DishRepository dishRepository;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public DataInitializer(DishRepository dishRepository) {
+    public DataInitializer(DishRepository dishRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.dishRepository = dishRepository;
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -39,8 +47,16 @@ public class DataInitializer implements CommandLineRunner {
                     new Dish("Латте", "Напитки", "Эспрессо с молочной пеной", 179.0),
                     new Dish("Лимонад домашний", "Напитки", "Свежевыжатый лимонный сок с мятой и мёдом", 129.0)
             );
-
             dishRepository.saveAll(dishes);
+        }
+        if (userRepository.findByEmail("admin@example.com").isEmpty()) {
+            User admin = new User();
+            admin.setFirstName("Nikita");
+            admin.setLastName("Admin");
+            admin.setEmail("admin@example.com");
+            admin.setRole(Role.ADMIN);
+            admin.setPasswordHash(passwordEncoder.encode("admin"));
+            userRepository.save(admin);
         }
     }
 }

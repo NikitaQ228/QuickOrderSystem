@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderCreateDto {
-    private List<OrderItemDto> orderItems;
+    private List<OrderItemCreateDto> orderItems;
     private String address;
     private String phone;
     private String comment;
